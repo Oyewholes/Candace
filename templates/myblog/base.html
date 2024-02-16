@@ -1,0 +1,175 @@
+<!-- myblog/templates/base.html -->
+<!DOCTYPE html>
+{% load static %} {% load static tailwind_tags %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>{% block title %}My Blog{% endblock %}</title>
+    {% tailwind_css %}
+  </head>
+  <body class="bg-blue-300">
+    <nav style="" class="bg-gray-900 text-white fixed top-0 z-50 w-full">
+      <div class="mx-auto max-w-5xl px-8">
+        <div class="flex justify-between">
+          <div class="flex space-x-4">
+            <!-- Logo -->
+            <div class="py-5">
+              <a
+                href="#"
+                class="flex items-center px-5 py-2 text-gray-700 hover:text-gray-900"
+              >
+                <img src="{%static 'lamlard/images/fav.png'%}" />
+                <span class="font-bold text-white"><i>CANDACE</i></span>
+              </a>
+            </div>
+
+            <!-- Primary nav -->
+            <div class="flex hidden items-center space-x-1 md:flex">
+              <a
+                href="{% url 'myblog:home' %}"
+                class="px-5 py-2 text-gray-200 hover:text-gray-500"
+                >Home</a
+              >
+
+              <a
+                href="{% url 'myblog:post_list' %}"
+                class="px-5 py-2 text-gray-200 hover:text-gray-500"
+                >Blog</a
+              >
+              <a
+                href="#section1"
+                class="px-5 py-2 text-gray-200 hover:text-gray-500 click-scroll"
+                >About Us</a
+              >
+            </div>
+          </div>
+          <!-- secondary nav-->
+          <div class="flex hidden items-center space-x-1 md:flex">
+            {%if user.is_authenticated%}
+            <p>Welcome {{user}}</p>
+            <a
+              href="{%url 'account_logout' %}"
+              class="px-3 py-5 hover:text-gray-500"
+              >Logout</a
+            >
+            {% else %}
+            <a
+              href="{%url 'account_login' %}"
+              class="px-3 py-5 hover:text-gray-500"
+              >Login</a
+            >
+            <a
+              href="{%url 'account_signup' %}"
+              class="rounded px-3 py-3 font-bold text-yellow-900 transition duration-200 hover:text-gray-500 hover:text-yellow-900"
+              >Sign Up</a
+            >
+            {% endif %}
+          </div>
+          <!-- Mobile button goes here -->
+          <div class="flex items-center md:hidden">
+            <button class="mobile-menu-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="h-6 w-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- mobile menu -->
+      <div class="mobile-menu hidden md:hidden">
+        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-200"
+          >Features</a
+        >
+        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-200"
+          >Pricing</a
+        >
+      </div>
+    </nav>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="container mx-auto mt-4">{% block content %} {% endblock %}</div>
+
+    <script src="{%static 'lamlard/JS/nav.js' %}"></script>
+  </body>
+  <br />
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto">
+      <div class="flex flex-wrap justify-between">
+        <div class="w-full md:w-1/2 lg:w-1/4 mb-8 md:mb-0">
+          <h2 class="text-lg font-semibold mb-4">Developer Contact:</h2>
+          <p>woleoyediran@gmail.com</p>
+        </div>
+        <div class="w-full md:w-1/2 lg:w-1/4 mb-8 md:mb-0">
+          <h2 class="text-lg font-semibold mb-4">Useful Links</h2>
+          <ul>
+            <li>
+              <a
+                href="{% url 'myblog:home' %}"
+                class="text-gray-400 hover:text-white"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white">About</a>
+            </li>
+            <li>
+              <a
+                href="{% url 'myblog:post_list' %}"
+                class="text-gray-400 hover:text-white"
+                >Blog</a
+              >
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white">Contact</a>
+            </li>
+          </ul>
+        </div>
+        <div class="w-full md:w-1/2 lg:w-1/4 mb-8 md:mb-0">
+          <h2 class="text-lg font-semibold mb-4">
+            Social Media: Coming Soon!!!!!
+          </h2>
+          <ul>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white">Facebook</a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white">Twitter</a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white">Instagram</a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white">LinkedIn</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 border-t border-gray-800">
+      <div class="container mx-auto pt-4 text-sm text-center">
+        <p>&copy; 2024 Your Blog. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="{%static 'lamlard/JS/nav.js' %}"></script>
+</html>

@@ -1,0 +1,44 @@
+<body
+  class="bg-cover bg-center p-0"
+  style="background-image: url('/static/lamlard/images/natal.jpg')"
+>
+  {% extends 'myblog/base.html' %} {% block content %}
+
+  <strong class="text-white">BLOG POSTS</strong>
+  <br />
+  <br />
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+  >
+    {% for post in posts %}
+    <div
+      class="max-w-sm w-full sm:w-64 h-38 m-0 overflow-hidden bg-green-200 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    >
+      <img
+        class="w-full h-36 object-cover object-center rounded-t-lg"
+        src="{{post.image.url}}"
+        alt="{{post.title}}"
+      />
+      <div class="p-5">
+        <h2
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          {{post.title}}
+        </h2>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          <i>Author:</i> <strong>{{post.author}}</strong>
+        </p>
+        <a href="{% url 'myblog:post_detail' post.pk %}">
+          <button
+            class="bg-blue-800 hover:bg-gray-600 text-white py-2 px-4 rounded focus:outline-none focus:ring focus:border-gray-700"
+          >
+            Read More
+          </button>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% endblock %}
+</body>

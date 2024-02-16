@@ -1,0 +1,34 @@
+<body
+  class="bg-cover bg-center p-0"
+  style="background-image: url('/static/lamlard/images/joanna.jpg')"
+>
+  {% extends 'myblog/base.html' %} {% load static %} {% load static
+  tailwind_tags %} {% load crispy_forms_tags %} {% block content %}
+  <strong>{{ post.title }}</strong>
+  <br />
+  <br />
+  <p>{{ post.content | linebreaksbr | safe }}</p>
+  <br /><br />
+  <p><i>Published on: {{ post.pub_date }}</i></p>
+  <p><i>Author: {{ post.author }}</i></p>
+  <br />
+  <br />
+  <h2>Comments:</h2>
+  <ul>
+    {% for comment in comments %}
+    <li>
+      <strong>{{ comment.name }}</strong>
+      <h3>{{ comment.body }}</h3>
+      <h6>{{ comment.created_at }}</h6>
+    </li>
+    {% endfor %}
+  </ul>
+  <br />
+  <br />
+  <!-- Comment Form -->
+  <h2>Leave a Comment</h2>
+  <form method="post" action="{% url 'myblog:post_detail' pk=post.pk %}">
+    {% csrf_token %}{{ form.as_p }}{% crispy comment_form %}
+  </form>
+  {% endblock %}
+</body>

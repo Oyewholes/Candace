@@ -1,0 +1,120 @@
+<body class="">
+  {% extends 'myblog/base.html' %} {% block content %} {% load static %}
+  <div
+    class="py-20"
+    style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%)"
+  >
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold mb-2 text-black">
+        Welcome to CANDACE Blog!
+      </h2>
+      <h3 class="text-2xl mb-8 text-gray-200">
+        The Perfect place for therapeutic read.
+      </h3>
+
+      {% comment %}
+      <button
+        class="bg-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider"
+      >
+        Pre Order
+      </button>
+      {% endcomment %}
+    </div>
+  </div>
+  <section class="container mx-auto px-6 p-10" id="section1">
+    <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">About Us</h2>
+    <div class="flex items-center flex-wrap mb-20">
+      <div class="w-full md:w-1/2">
+        <h4 class="text-3xl text-gray-800 font-bold mb-3">
+          Sharing the Faith Journey
+        </h4>
+        <p class="text-gray-600 mb-8">
+          Welcome to our Christian blog! We are a community of believers who are
+          passionate about sharing our faith journey with others. Our mission is
+          to spread the love of Christ and inspire others to deepen their
+          relationship with God.
+        </p>
+      </div>
+      <div class="w-full md:w-1/2">
+        <img
+          src="{%static 'lamlard/images/faith/faith2.jpg' %}"
+          alt="Monitoring"
+        />
+      </div>
+    </div>
+
+    <div class="flex items-center flex-wrap mb-20">
+      <div class="w-full md:w-1/2">
+        <img
+          src="{%static 'lamlard/images/faith/faih1.jpg' %}"
+          alt="Reporting"
+        />
+      </div>
+      <div class="w-full md:w-1/2 pl-10">
+        <h4 class="text-3xl text-gray-800 font-bold mb-3">Our Beliefs</h4>
+        <p class="text-gray-600 mb-8">
+          At the core of our beliefs is the belief in the triune God: Father,
+          Son, and Holy Spirit. We believe in the authority of the Bible as the
+          Word of God, the divinity of Jesus Christ, and the power of the Holy
+          Spirit in transforming lives..
+        </p>
+      </div>
+    </div>
+
+    <div class="flex items-center flex-wrap mb-20">
+      <div class="w-full md:w-1/2">
+        <h4 class="text-3xl text-gray-800 font-bold mb-3">Our Values</h4>
+        <p class="text-gray-600 mb-8">
+          <b>Faith:</b> We trust in God's plan and purpose for our lives.
+          <br />
+          <span
+            ><b>Hope:</b> We have hope in the promises of God and the eternal
+            life offered through Jesus Christ.</span
+          >
+          <br />
+          <b>Love:</b> We seek to love God with all our heart, soul, and mind,
+          and to love our neighbors as ourselves..
+        </p>
+      </div>
+      <div class="w-full md:w-1/2">
+        <img
+          src="{%static 'lamlard/images/faith/faith3.jpg' %}"
+          alt="Syncing"
+        />
+      </div>
+    </div>
+  </section>
+  <div
+    class="w-full md:w-1/2 lg:w-1/4 absolute right-1/2 transform translate-x-1/2 bg-indigo-500 px-5 py-10 items-center justify-center"
+  >
+    <h2 class="text-lg font-semibold mb-4 text-black"><i>Subscribe</i></h2>
+    <p class="text-black">
+      Subscribe to our newsletter to receive updates and news.
+    </p>
+    <div class="w-full md:w-3/4 lg:w-2/3">
+      <form class="mt-4" method="post" action="{% url 'myblog:subscribe' %}">
+        {% csrf_token %} {{ form.as_p }}
+        <button
+          class="mt-2 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  {% endblock%}
+</body>

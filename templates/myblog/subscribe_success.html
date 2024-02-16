@@ -1,0 +1,59 @@
+<!-- subscribe_success.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subscription Success</title>
+    <!-- Include Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Modal backdrop -->
+    <div
+      id="modalBackdrop"
+      class="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center"
+    >
+      <!-- Modal container -->
+      <div class="bg-white p-8 rounded-lg">
+        <!-- Modal content -->
+        <h2 class="text-2xl font-bold mb-4">Subscription Success</h2>
+        <p>
+          Thank you for subscribing! You have successfully subscribed to our
+          newsletter.
+        </p>
+        <!-- Close button -->
+        <button
+          id="closeButton"
+          class="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <!-- Include JavaScript -->
+    <script>
+      // Function to close the modal and return to index.html
+      function closeModal() {
+        var modalBackdrop = document.getElementById("modalBackdrop")
+        modalBackdrop.classList.add("hidden") // Hide the modal
+        // Redirect to index.html (adjust the URL as needed)
+        window.location.href = "/" // Replace "/" with the URL of your index.html page
+      }
+
+      // Show modal when the page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        var modalBackdrop = document.getElementById("modalBackdrop")
+        modalBackdrop.classList.remove("hidden") // Show the modal
+
+        // Attach click event listener to the close button
+        var closeButton = document.getElementById("closeButton")
+        closeButton.addEventListener("click", closeModal)
+      })
+    </script>
+  </body>
+</html>
