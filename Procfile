@@ -1,0 +1,1 @@
+web: gunicorn lamlard .wsgi --log-file -
