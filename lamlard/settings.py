@@ -114,6 +114,7 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+SIGNUP_REDIRECT_URL = '/'
 
 # SOCIALACCOUNT_PROVIDERS = {
 #     'google': {
@@ -185,8 +186,9 @@ STATIC_ROOT = BASE_DIR/ 'staticfiles'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT =BASE_DIR / 'media'
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT =BASE_DIR / 'media'
+MEDIA_ROOT = '/media_images/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
