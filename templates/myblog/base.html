@@ -10,11 +10,11 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <title>{% block title %}My Blog{% endblock %}</title>
+    <title>{% block title %}Candace{% endblock %}</title>
     {% tailwind_css %}
   </head>
   <body class="bg-blue-300">
-    <nav style="" class="bg-gray-900 text-white fixed top-0 z-50 w-full">
+    <nav class="bg-gray-900 text-white fixed top-0 z-50 w-full">
       <div class="mx-auto max-w-5xl px-8">
         <div class="flex justify-between">
           <div class="flex space-x-4">
@@ -94,11 +94,23 @@
       </div>
       <!-- mobile menu -->
       <div class="mobile-menu hidden md:hidden">
-        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-200"
-          >Features</a
+        <a
+          href="{% url 'myblog:home' %}"
+          class="block px-4 py-2 text-sm hover:bg-gray-200"
+          >Home</a
         >
-        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-200"
-          >Pricing</a
+        <a
+          href="{% url 'myblog:post_list' %}"
+          class="block px-4 py-2 text-sm hover:bg-gray-200"
+          >Blog</a
+        >
+        <a href="#section1" class="block px-4 py-2 text-sm hover:bg-gray-200"
+          >About Us</a
+        >
+        <a
+          href="{%url 'account_signup' %}"
+          class="rounded px-3 py-3 font-bold text-blue-300 transition duration-200 hover:text-gray-500 hover:text-white"
+          >Sign Up</a
         >
       </div>
     </nav>
@@ -110,6 +122,15 @@
     <div class="container mx-auto mt-4">{% block content %} {% endblock %}</div>
 
     <script src="{%static 'lamlard/JS/nav.js' %}"></script>
+    <script>
+      // JavaScript to toggle mobile menu visibility
+      const mobileMenuButton = document.querySelector(".mobile-menu-button")
+      const mobileMenu = document.querySelector(".mobile-menu")
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden")
+      })
+    </script>
   </body>
   <br />
   <footer class="bg-gray-900 text-white py-12">
